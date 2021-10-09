@@ -1,28 +1,62 @@
-# GraphQL schema example
-#
-# https://gqlgen.com/getting-started/
-
-type Todo {
+type Recipe {
   id: ID!
-  text: String!
-  done: Boolean!
-  user: User!
+  name: String!
+  ingredients: [Ingredient!]!
+  instructions: [Instruction!]!
 }
 
-type User {
-  id: ID!
+input NewRecipe {
   name: String!
 }
 
-type Query {
-  todos: [Todo!]!
+type Ingredient {
+  id: ID!
+  name: String!
+  quantity: String!
+  recipe: [Recipe!]!
 }
 
-input NewTodo {
-  text: String!
-  userId: String!
+input RecipeIngredient {
+  name: String!
+  quantity: String!
 }
+
+type Query {
+  recipes: [Recipe!]!
+}
+
+type Instruction {
+  id: ID!
+  info: String!
+  recipe: [Recipe!]!
+}
+
+input RecipeInstruction {
+  info: String!
+}
+
+input NewUser {
+  username: String!
+  password: String!
+  email: String!
+}
+
+input Login {
+  username: String!
+  password: String!
+}
+
+input RefreshTokenInput{
+  token: String!
+}
+
 
 type Mutation {
-  createTodo(input: NewTodo!): Todo!
+  createRecipe(input: NewRecipe!): Recipe!
+  addRecipeInstruction(input: RecipeInstruction): Instruction!
+  addRecipeIngredient(input: RecipeIngredient): Ingredient!
+  createUser(input: NewUser!): String!
+  login(input: Login!): String!
+  # we'll talk about this in authentication section
+  refreshToken(input: RefreshTokenInput!): String!
 }

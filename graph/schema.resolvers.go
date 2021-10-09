@@ -11,11 +11,31 @@ import (
 	"github.com/TheAlchemistKE/KenyanCuisines-Backend/graph/model"
 )
 
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
+func (r *mutationResolver) CreateRecipe(ctx context.Context, input model.NewRecipe) (*model.Recipe, error) {
 	panic(fmt.Errorf("not implemented"))
 }
 
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
+func (r *mutationResolver) AddRecipeInstruction(ctx context.Context, input *model.RecipeInstruction) (*model.Instruction, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+func (r *mutationResolver) AddRecipeIngredient(ctx context.Context, input *model.RecipeIngredient) (*model.Ingredient, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) (string, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+func (r *mutationResolver) Login(ctx context.Context, input model.Login) (string, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+func (r *mutationResolver) RefreshToken(ctx context.Context, input model.RefreshTokenInput) (string, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
+func (r *queryResolver) Recipes(ctx context.Context) ([]*model.Recipe, error) {
 	panic(fmt.Errorf("not implemented"))
 }
 

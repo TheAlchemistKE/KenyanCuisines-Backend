@@ -36,7 +36,38 @@ func (r *mutationResolver) RefreshToken(ctx context.Context, input model.Refresh
 }
 
 func (r *queryResolver) Recipes(ctx context.Context) ([]*model.Recipe, error) {
-	panic(fmt.Errorf("not implemented"))
+	var recipes []*model.Recipe
+	var ingredients []*model.Ingredient
+	var instructions []*model.Instruction
+
+	var ingr = model.Ingredient{
+		Name:     "Parsley",
+		Quantity: "One bunch",
+		Recipe:   nil,
+	}
+	ingredients = append(ingredients, &ingr)
+
+	var ingr1 = model.Ingredient{
+		Name:     "Tomato",
+		Quantity: "Two",
+		Recipe:   nil,
+	}
+	ingredients = append(ingredients, &ingr1)
+
+	var instruction1 = model.Instruction{
+		Info:   "Fry tomatoes then add parsley.",
+		Recipe: nil,
+	}
+	instructions = append(instructions, &instruction1)
+
+	var dummyRecipe = model.Recipe{
+		Name: "Recipe1",
+		Ingredients: ingredients,
+		Instructions: instructions,
+	}
+	recipes = append(recipes, &dummyRecipe)
+	return recipes, nil
+
 }
 
 // Mutation returns generated.MutationResolver implementation.
